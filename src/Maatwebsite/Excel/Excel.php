@@ -791,11 +791,11 @@ class Excel extends \PHPExcel
             }
 
             // If the cell is a date time and we want to parse them
-            if(PHPExcel_Shared_Date::isDateTime($this->cell))
+            if ($this->cell->getCalculatedValue() and PHPExcel_Shared_Date::isDateTime($this->cell))
             {
                 // Format the date
                 if ($this->formatDates !== false) 
-                {
+                {   
                     $value = PHPExcel_Shared_Date::ExcelToPHPObject($this->cell->getCalculatedValue());
                     $value = $value->format($this->dateFormat);
                 }
@@ -809,9 +809,9 @@ class Excel extends \PHPExcel
                     );
                 }
 
-                if($this->useCarbon)
+                if ($this->useCarbon)
                 {
-                    $value = \Carbon::parse($value)->{$this->carbonMethod}();
+                    $value = \Carbon\Carbon::parse($value)->{$this->carbonMethod}();
                 }
             }
 
