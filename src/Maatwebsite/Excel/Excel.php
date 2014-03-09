@@ -658,22 +658,10 @@ class Excel extends \PHPExcel
                 // Get the sheet count
                 $this->sheetCount = $this->excel->getSheetCount();
 
-                // If we have more than 1 worksheet, seperate them
-                if($this->sheetCount > 1)
-                {
-
-                    // Parse the rows into seperate worksheets
-                    $parsed[$title] = $this->parseRows();
-
-                }
-                else
-                {
-                    // Parse the rows, but neglect the worksheet title
-                    $parsed = $this->parseRows();
-                }
+                // Parse the rows into seperate worksheets
+                $parsed[$title] = $this->parseRows();
 
                 $i++;
-
             }
 
 
