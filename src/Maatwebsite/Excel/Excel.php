@@ -784,7 +784,7 @@ class Excel extends \PHPExcel
             $index = \PHPExcel_Cell::columnIndexFromString($this->cell->getColumn());
 
             // Check how we need to save the parsed array
-            if($this->firstRowAsLabel !== false)
+            if($this->firstRowAsLabel !== false and isset($this->labels[$i]))
             {
                 // Set label index
                 $index = $this->labels[$i];
